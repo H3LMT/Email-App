@@ -5,6 +5,20 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			body{
+				font-family: helvetica;
+			}
+			.title{
+				margin-left: 1vw;
+			}
+			.input{
+				margin-bottom: 1vh;
+			}
+			form{
+				padding-left: 1vw;
+			}
+		</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -17,6 +31,15 @@
 	    		</ul>
 	  		</div>
 		</nav>	
-  		<h1 id="subC" style="padding-left:1vw;">Vidyut Is Fat</h1>
+		<form action="./request.py" target="_blank" method = "POST">
+  			Name:<br>
+  			<input class = "input type="text" name="name"><br>
+  			Email Address:<br>
+  			<input class = "input" type="text" name="email"><br>
+  			Text:<br>
+  			<textarea  name="msg"></textarea><br>
+  			<button type="submit">Submit</button>
+		</form>
+		<h4 class = "title" id="answer">0</h4>
   	</body>
 </html>
