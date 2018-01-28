@@ -15,19 +15,21 @@ def home():
 	return render_template('index.html')
 
 @app.route('/about')
-def hi():
+def about():
    return render_template('about.html')
 
 @app.route('/submit',methods =['POST'])
 def sendMail():
+	#setup keys
 	global mailgunKey
 	global mailgunSandbox
 	global sendgridKey
-	if(mailgunSandbox=="YOUR_SANDBOX_HERE" or mailgunKey =="YOUR_KEY_HERE" or sendgridKey=="YOUR_KEY_HERE"):
-		mailgunKey = str(numpy.load("./keys/mgkey.npy"))
-		mailgunKey = "1234"
-		sendgridKey = str(numpy.load("./keys/sg.npy"))
+	if(mailgunSandbox=="YOUR_SANDBOX_HERE"):
 		mailgunSandbox = str(numpy.load("./keys/mgsbx.npy"))
+	if mailgunKey =="YOUR_KEY_HERE":
+		mailgunKey = str(numpy.load("./keys/mgkey.npy"))
+	if sendgridKey=="YOUR_KEY_HERE":
+		sendgridKey = str(numpy.load("./keys/sg.npy"))
 
 	#form data
 	name = request.form['name']
@@ -52,7 +54,8 @@ def sendMail():
 	print 'Status: {0}'.format(pull.status_code)
 	print 'Body:   {0}'.format(pull.text)
 
-	if(pull.status_code!=200): #if mailgun fails try sendgrid
+	#if mailgun fails try sendgrid
+	if(pull.status_code!=200): 
 		provider = "SendGrid"
 		sg = sendgrid.SendGridAPIClient(apikey=sendgridKey)
 		from_email = Email("test@example.com")
@@ -63,12 +66,10 @@ def sendMail():
 		response = ""
 		try:
 			response = sg.client.mail.send.post(request_body=mail.get())
-			print("WDJOJWD W")
 			print(response.status_code)
 			print(response.body)
 			print(response.headers)
 		except:
-			print("FWJOJOE L")
 			condition = False		
 
 	#status message
