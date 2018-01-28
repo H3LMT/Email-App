@@ -25,6 +25,7 @@ def sendMail():
 	global sendgridKey
 	if(mailgunSandbox=="YOUR_SANDBOX_HERE" or mailgunKey =="YOUR_KEY_HERE" or sendgridKey=="YOUR_KEY_HERE"):
 		mailgunKey = str(numpy.load("./keys/mgkey.npy"))
+		mailgunKey = "1234"
 		sendgridKey = str(numpy.load("./keys/sg.npy"))
 		mailgunSandbox = str(numpy.load("./keys/mgsbx.npy"))
 
@@ -43,9 +44,9 @@ def sendMail():
 	provider = "Mailgun"
 	request_url = 'https://api.mailgun.net/v2/{0}/messages'.format(sandbox)
 	pull = requests.post(request_url, auth=('api', key), data={
-	'from':  name+' <excited@samples.mailgun.org>',
+	'from':  name+'<'+sender+'>',
 	'to': recepient,
-	'subject': 'Test',
+	'subject': subject,
 	'text': message})
 	condition = True
 	print 'Status: {0}'.format(pull.status_code)

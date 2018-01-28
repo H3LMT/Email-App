@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Email App</title>
+		<title>Home</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,25 +24,41 @@
 		<nav class="navbar navbar-inverse">
 	  		<div class="container-fluid">
 	    		<div class="navbar-header">
-	      			<a style="color: red;" class="navbar-brand" href="#">Home</a>
+	      			<a style="color: #157CBD;" class="navbar-brand" href="#">Home</a>
 	    		</div>
 	       		<ul class="nav navbar-nav">
 	      			<li class="active"><a href="/about">About</a></li>
 	    		</ul>
 	  		</div>
 		</nav>	
-		<form action="/submit" target="_blank" method = "POST">
+		<form action="/submit" target="_blank" method = "POST" name = "form1">
   			Name:<br>
-  			<input class = "input type="text" name="name" value='John Doe'><br>
+  			<input class = "input type="text" name="name" placeholder='John Doe' required><br>
   			From:<br>
-  			<input class = "input type="text" name="from" value='from@abc.com'><br>
+  			<input class = "input type="text" name="from" placeholder='from@abc.com' required><br>
   			To:<br>
-  			<input class = "input" type="text" name="to" value='to@abc.com'><br>
+  			<input class = "input type="text" name="to" placeholder='to@abc.com' required><br>
   			Subject:<br>
-  			<input class = "input" type="text" name="subject" value='Hello'><br>
+  			<input class = "input type="text" name="subject" placeholder='Hello' required><br>
   			Text:<br>
-  			<textarea  name="msg"></textarea><br>
+  			<textarea  name="msg" required></textarea><br>
   			<button type="submit">Submit</button>
 		</form>
+		<script type="text/javascript">
+			function required()
+			{
+			var empt = document.forms["form1"]["to"].value;
+			if (empt == "")
+			{
+			alert("Please input a Value");
+			return false;
+			}
+			else 
+			{
+			alert('Code has accepted : you can try another');
+			return true; 
+			}
+			}
+		</script>
   	</body>
 </html>
