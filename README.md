@@ -1,5 +1,5 @@
 # Email App
-Simple email web app to send emails with
+Simple email web app 
 
 ## Required Modules
 - Python 3.0+
