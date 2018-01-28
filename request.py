@@ -58,11 +58,11 @@ def sendMail():
 	if(pull.status_code!=200): 
 		provider = "SendGrid"
 		sg = sendgrid.SendGridAPIClient(apikey=sendgridKey)
-		from_email = Email("test@example.com")
+		from_email = Email(sender)
 		to_email = Email(recepient)
-		subject = "Sending with SendGrid is Fun"
+		sbj = subject
 		content = Content("text/plain", message)
-		mail = Mail(from_email, subject, to_email, content)
+		mail = Mail(from_email, sbj, to_email, content)
 		response = ""
 		try:
 			response = sg.client.mail.send.post(request_body=mail.get())
