@@ -23,5 +23,5 @@ It's easy to make accounts for both of these services. In order to use mailgun y
 ## Testing
 All fields are required from the user and the form cannot be submitted until all fields have an input. The webapp first tries to use the mailgun service and if it fails (i.e. email that is not registered in mailgun service), it will automatically without user input switch to the sendgrid service which is much more lenient. Once submitted a new tab will open showing the address the email was sent to as well as which provider was used. If both services fail, a message will be displayed showing that the e-mail was not delivered. 
 
-To test whether it autmoatically switches over to sendgrid, a bad api key can be used, or a email that is not registered in the mailgun service is used. 
+To test whether it automatically switches over to sendgrid, a bad api key can be used, or a email that is not registered in the mailgun service is used. 
 
